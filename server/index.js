@@ -6,7 +6,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from "cors";
-impost dotenv  from 'dotenv'
+import dotenv  from 'dotenv'
 dotenv.config()
 
 import postRoutes from './routes/posts.js'
@@ -28,7 +28,9 @@ const PORT=process.env.PORT || 5000;
 
 // DB CONNECTION
 
-mongoose.connect(process.env.MONGO_URI,{
+// const MONGODB_URI='mongodb+srv://dbUser:T7DfnLPxIWY94dOh@cluster0.lwnah.mongodb.net/test'
+
+mongoose.connect(process.env.MONGODB_URI,{
 useCreateIndex:true,
 useNewUrlParser:true,
 useUnifiedTopology:true})
