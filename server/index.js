@@ -7,7 +7,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from "cors";
 import dotenv  from 'dotenv'
-dotenv.config()
+dotenv.config({path:'.env'})
 
 import postRoutes from './routes/posts.js'
 
@@ -15,7 +15,7 @@ const app=express();
 
 // middleware
 
-app.use('/posts',postRoutes)
+
 
 
 app.use(bodyParser.json({limit:"30mb",extended:true}));
@@ -23,12 +23,14 @@ app.use(bodyParser.urlencoded({limit:"30mb",extended:true}));
 app.use(cors());
 
 
+app.use('/posts',postRoutes)
+
+
 
 const PORT=process.env.PORT || 5000;
 
 // DB CONNECTION
 
-// const MONGODB_URI='mongodb+srv://dbUser:T7DfnLPxIWY94dOh@cluster0.lwnah.mongodb.net/test'
 
 mongoose.connect(process.env.MONGODB_URI,{
 useCreateIndex:true,
